@@ -1,5 +1,8 @@
 package com.model;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import com.main.Model;
 
 /**
@@ -19,6 +22,7 @@ public class Algorithm {
 	}
 	
 	public int levenshteinDistance(String s, String t) {
+		
 		int d[][]; // matrix
 		int n; // length of s
 		int m; // length of t
@@ -54,7 +58,7 @@ public class Algorithm {
 		}
 
 		// Step 3
-
+		long timeStart = System.nanoTime();
 		for(i = 1; i <= n; i++) {
 
 			s_i = s.charAt(i - 1);
@@ -73,6 +77,15 @@ public class Algorithm {
 				d[i][j] = this.model.getMinimum(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1] + cost);
 			}
 		}
+		
+		long timeEnd = System.nanoTime();
+		long executionTime = timeEnd-timeStart;
+		double seconds = (double)executionTime / 1000000000.0;
+		
+		System.out.println("STANDARD: "+d[n][m]);
+		NumberFormat formatter = new DecimalFormat("#0.0000000000");
+		System.out.println("Execution Time (ns): "+executionTime);
+		System.out.println("Execution Time (sec): "+formatter.format(seconds));
 		// Step 7
 		return d[n][m];
 	}

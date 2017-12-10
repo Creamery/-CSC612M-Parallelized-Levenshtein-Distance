@@ -37,12 +37,9 @@ public class ParallelAlgorithm {
 	}
 	
 	
-	public int levenshteinDistance(String s, String t) {
+	public int levenshteinDistance(String s, String t) {		
 		this.stringS = s;
 		this.stringT = t;
-		
-		System.out.println("1: "+stringS);
-		System.out.println("2: "+stringT);
 		
 	    // Step 1
 		n = s.length();
@@ -106,9 +103,10 @@ public class ParallelAlgorithm {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		model.printMatrix(this.matrix);
 
+		
+//		model.printMatrix(this.matrix);
+		System.out.println("PARALLEL: "+matrix[n][m]);
 		double seconds = (double)executionTime / 1000000000.0;
 		NumberFormat formatter = new DecimalFormat("#0.0000000000");
 		System.out.println("Execution Time (ns): "+executionTime);
