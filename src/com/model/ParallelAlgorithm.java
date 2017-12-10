@@ -3,6 +3,8 @@ package com.model;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import com.main.Model;
 import com.main.ComputeDistance;
@@ -84,15 +86,36 @@ public class ParallelAlgorithm {
 				listComputeDistance.add(computeDistance);
 			}
 		}
-
-		ExecutorService executor = Executors.newFixedThreadPool(n*m);
+		
+		final int cpus = Runtime.getRuntime().availableProcessors();
+		System.out.println("cpus "+cpus);
+		
+		ExecutorService executor = Executors.newFixedThreadPool(cpus);
+		ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1, r -> {
+		    Thread thread = Executors.defaultThreadFactory().newThread(r);
+		    thread.setDaemon(true);
+		    return thread;
+		});
 		try {
 //			List<Future<Long>> results;
-			executor.invokeAll(listComputeDistance);
+			executorService.invokeAll(listComputeDistance);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			executorService.shutdown();
+			try {
+				executorService.awaitTermination(5, TimeUnit.SECONDS);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			executorService.shutdownNow();
+		}
+		executorService.shutdown();
+		try {
+			executorService.awaitTermination(5, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		executor.shutdown();
+		executorService.shutdownNow();
 		model.printMatrix(this.matrix);
 		// Step 7
 		return matrix[n][m];

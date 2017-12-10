@@ -45,7 +45,6 @@ public class ComputeDistance implements Callable<Long> {
 						algorithm.getMatrix()[i-1][j]+1,
 						algorithm.getMatrix()[i][j-1]+1,
 						algorithm.getMatrix()[i-1][j-1] + cost);
-
 		
     	return distance;
     }
