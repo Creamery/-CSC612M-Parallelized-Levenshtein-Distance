@@ -18,7 +18,6 @@ public class TextFileHandler {
 			
 		    while((strLine = loadFile.readLine()) != null) {
 		    	strFile += strLine;
-		    	strFile += "\n";
 		    }
 		    
 		    loadFile.close();
