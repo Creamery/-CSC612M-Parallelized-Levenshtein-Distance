@@ -14,7 +14,7 @@ public class Model {
 	}
 	
 	public void localInput () {
-		this.parallelAlgorithm.LD(
+		this.parallelAlgorithm.levenshteinDistance(
 				textHandler.load("sequence1.txt"),
 				textHandler.load("sequence2.txt"));
 	}

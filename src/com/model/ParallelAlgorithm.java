@@ -1,11 +1,8 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import com.main.Model;
 import com.main.ComputeDistance;
 
@@ -36,7 +33,7 @@ public class ParallelAlgorithm {
 	}
 	
 	
-	public int LD(String s, String t) {
+	public int levenshteinDistance(String s, String t) {
 		this.stringS = s;
 		this.stringT = t;
 		
@@ -87,37 +84,22 @@ public class ParallelAlgorithm {
 			}
 		}
 		
-		final int cpus = Runtime.getRuntime().availableProcessors();
-		System.out.println("cpus "+cpus);
-		
-		ExecutorService executor = Executors.newFixedThreadPool(cpus);
 		ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1, r -> {
 		    Thread thread = Executors.defaultThreadFactory().newThread(r);
 		    thread.setDaemon(true);
 		    return thread;
 		});
+		
 		try {
-//			List<Future<Long>> results;
 			executorService.invokeAll(listComputeDistance);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			executorService.shutdown();
-			try {
-				executorService.awaitTermination(5, TimeUnit.SECONDS);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
-			executorService.shutdownNow();
 		}
+		
 		executorService.shutdown();
-		try {
-			executorService.awaitTermination(5, TimeUnit.SECONDS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		executorService.shutdownNow();
+		
 		model.printMatrix(this.matrix);
-		// Step 7
 		return matrix[n][m];
 	}
 

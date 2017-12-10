@@ -1,4 +1,7 @@
 package com.model;
+
+import com.main.Model;
+
 /**
  * Algorithm referenced from:
  * 	Levenshtein Distance, in Three Flavors
@@ -9,29 +12,13 @@ package com.model;
  *
  */
 public class Algorithm {
-
-	  //****************************
-	  // Get minimum of three values
-	  //****************************
-
-	private int getMinimum(int a, int b, int c) {
-		int mi;
-
-		mi = a;
-		if(b < mi) {
-			mi = b;
-		}
-		if(c < mi) {
-			mi = c;
-		}
-		return mi;
+	private Model model;
+	
+	public Algorithm(Model model) {
+		this.model = model;
 	}
-
-	  //*****************************
-	  // Compute Levenshtein distance
-	  //*****************************
-
-	public int LD(String s, String t) {
+	
+	public int levenshteinDistance(String s, String t) {
 		int d[][]; // matrix
 		int n; // length of s
 		int m; // length of t
@@ -83,7 +70,7 @@ public class Algorithm {
 					cost = 1;
 				}
 				// Step 6
-				d[i][j] = getMinimum(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1] + cost);
+				d[i][j] = this.model.getMinimum(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1] + cost);
 			}
 		}
 		// Step 7
