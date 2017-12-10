@@ -15,8 +15,8 @@ public class Model {
 	
 	public void localInput () {
 		this.parallelAlgorithm.LD(
-				textHandler.load(""),
-				textHandler.load(""));
+				textHandler.load("sequence1.txt"),
+				textHandler.load("sequence2.txt"));
 	}
 	
 	public int getMinimum (int a, int b, int c) {

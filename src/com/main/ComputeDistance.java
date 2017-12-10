@@ -17,7 +17,6 @@ public class ComputeDistance implements Callable<Long> {
 	
 	@Override
     public Long call() {
-		System.out.println("EXECUTE");
 		long distance = 0;
 		char s_i; // ith character of s
 		char t_j; // jth character of t
@@ -26,8 +25,6 @@ public class ComputeDistance implements Callable<Long> {
 		while(algorithm.getMatrix()[i-1][j] == -1 ||
 				algorithm.getMatrix()[i][j-1] == -1 ||
 				algorithm.getMatrix()[i-1][j-1] == -1) {
-			System.out.println(i+" "+j+" : wait");
-			System.out.println();
 			algorithm.getModel().printMatrix(algorithm.getMatrix());
 			// wait
 		}
