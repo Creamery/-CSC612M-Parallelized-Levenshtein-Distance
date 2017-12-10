@@ -17,7 +17,8 @@ public class ComputeDistance implements Callable<Long> {
 	
 	@Override
     public Long call() {
-		long distance = 0;
+		long timeStart = System.nanoTime();
+		
 		char s_i; // ith character of s
 		char t_j; // jth character of t
 		int cost; // cost
@@ -46,6 +47,8 @@ public class ComputeDistance implements Callable<Long> {
 						algorithm.getMatrix()[i][j-1]+1,
 						algorithm.getMatrix()[i-1][j-1] + cost);
 		
-    	return distance;
+		long timeEnd = System.nanoTime();
+		long executionTime = timeEnd-timeStart;
+    	return executionTime;
     }
 }

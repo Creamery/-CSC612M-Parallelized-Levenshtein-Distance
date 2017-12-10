@@ -1,7 +1,11 @@
 package com.model;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import com.main.Model;
 import com.main.ComputeDistance;
@@ -55,8 +59,6 @@ public class ParallelAlgorithm {
 		this.matrix = new int [n+1][m+1];
 
 		// Step 2
-
-		
 		for(i = 0; i <= n; i++) {
 			matrix[i][0] = i;
 		}
@@ -89,17 +91,28 @@ public class ParallelAlgorithm {
 		    thread.setDaemon(true);
 		    return thread;
 		});
-		
+
+		Long executionTime = 0l;
 		try {
-			executorService.invokeAll(listComputeDistance);
-		} catch (InterruptedException e) {
+			
+			List<Future<Long>> timeList = executorService.invokeAll(listComputeDistance);
+			executorService.shutdown();
+			executorService.shutdownNow();
+			
+			for (Future<Long> time : timeList) {
+				executionTime += time.get();
+	        }
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		executorService.shutdown();
-		executorService.shutdownNow();
-		
 		model.printMatrix(this.matrix);
+
+		double seconds = (double)executionTime / 1000000000.0;
+		NumberFormat formatter = new DecimalFormat("#0.0000000000");
+		System.out.println("Execution Time (ns): "+executionTime);
+		System.out.println("Execution Time (sec): "+formatter.format(seconds));
 		return matrix[n][m];
 	}
 
