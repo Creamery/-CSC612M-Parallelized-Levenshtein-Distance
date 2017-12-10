@@ -37,9 +37,11 @@ public class ParallelAlgorithm {
 	public int LD(String s, String t) {
 		this.stringS = s;
 		this.stringT = t;
-
+		
+		System.out.println("1: "+stringS);
+		System.out.println("2: "+stringT);
+		
 	    // Step 1
-
 		n = s.length();
 		m = t.length();
 		

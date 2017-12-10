@@ -22,11 +22,11 @@ public class ComputeDistance implements Callable<Long> {
 		char t_j; // jth character of t
 		int cost; // cost
 		
+		// Wait while dependencies have not been computed
 		while(algorithm.getMatrix()[i-1][j] == -1 ||
 				algorithm.getMatrix()[i][j-1] == -1 ||
 				algorithm.getMatrix()[i-1][j-1] == -1) {
-			algorithm.getModel().printMatrix(algorithm.getMatrix());
-			// wait
+			
 		}
 		
 		t_j = algorithm.getStringT().charAt(j - 1);
