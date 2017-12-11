@@ -17,11 +17,11 @@ public class Model {
 	}
 	
 	public void localInput () {
-		String stringS = textHandler.load("sequence1.txt");
-		String stringT = textHandler.load("sequence2.txt");
+		String stringS = textHandler.load("distance 100000-0.txt");
+		String stringT = textHandler.load("distance 100000-0.txt");
 		
-		System.out.println(stringS.length()+": "+stringS);
-		System.out.println(stringT.length()+": "+stringT);
+		System.out.println(stringS.length()+": ");
+		System.out.println(stringT.length()+": ");
 		
 		System.out.println();
 		this.parallelAlgorithm.levenshteinDistance(stringS, stringT);

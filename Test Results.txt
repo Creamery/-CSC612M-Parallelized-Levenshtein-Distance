@@ -1,0 +1,147 @@
+
+
+.-----------------------.
+|	Equal Length: Yes	|
+|	Equal String: No	|
+'-----------------------'
+
+10: 
+10: 
+
+PARALLEL: 4
+Execution Time (ns): 193817
+Execution Time (sec): 0.0001938170
+
+STANDARD: 4
+Execution Time (ns): 30790
+Execution Time (sec): 0.0000307900
+
+
+
+100: 
+100: 
+
+PARALLEL: 53
+Execution Time (ns): 4374514
+Execution Time (sec): 0.0043745140
+
+STANDARD: 53
+Execution Time (ns): 2547251
+Execution Time (sec): 0.0025472510
+
+
+
+1000: 
+1000: 
+
+PARALLEL: 521
+Execution Time (ns): 44197954
+Execution Time (sec): 0.0441979540
+
+STANDARD: 521
+Execution Time (ns): 28228186
+Execution Time (sec): 0.0282281860
+
+
+10: 
+7: 
+
+PARALLEL: 6
+Execution Time (ns): 149208
+Execution Time (sec): 0.0001492080
+
+STANDARD: 6
+Execution Time (ns): 24079
+Execution Time (sec): 0.0000240790
+
+10: 
+13: 
+
+PARALLEL: 7
+Execution Time (ns): 1377254
+Execution Time (sec): 0.0013772540
+
+STANDARD: 7
+Execution Time (ns): 39080
+Execution Time (sec): 0.0000390800
+
+
+1000: 
+700: 
+
+PARALLEL: 507
+Execution Time (ns): 30384637
+Execution Time (sec): 0.0303846370
+
+STANDARD: 507
+Execution Time (ns): 25884620
+Execution Time (sec): 0.0258846200
+
+
+10: 
+100: 
+
+PARALLEL: 90
+Execution Time (ns): 1696586
+Execution Time (sec): 0.0016965860
+
+STANDARD: 90
+Execution Time (ns): 271976
+Execution Time (sec): 0.0002719760
+
+
+10: 
+1000: 
+
+PARALLEL: 990
+Execution Time (ns): 5973973
+Execution Time (sec): 0.0059739730
+
+STANDARD: 990
+Execution Time (ns): 1824089
+Execution Time (sec): 0.0018240890
+
+
+100000: 
+10: 
+
+PARALLEL: 99990
+Execution Time (ns): 42351709
+Execution Time (sec): 0.0423517090
+
+STANDARD: 99990
+Execution Time (ns): 18464710
+Execution Time (sec): 0.0184647100
+
+100000: 
+100: 
+
+PARALLEL: 99900
+Execution Time (ns): 299192315
+Execution Time (sec): 0.2991923150
+
+STANDARD: 99900
+Execution Time (ns): 55512156
+Execution Time (sec): 0.0555121560
+
+10: 
+10: 
+
+PARALLEL: 0
+Execution Time (ns): 153545
+Execution Time (sec): 0.0001535450
+
+STANDARD: 0
+Execution Time (ns): 29605
+Execution Time (sec): 0.0000296050
+
+10: 
+9: 
+
+PARALLEL: 1
+Execution Time (ns): 154343
+Execution Time (sec): 0.0001543430
+
+STANDARD: 1
+Execution Time (ns): 28816
+Execution Time (sec): 0.0000288160
